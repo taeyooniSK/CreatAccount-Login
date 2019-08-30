@@ -1,0 +1,18 @@
+{
+  "name": "loginSystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon -w server.js"
+  },
+  "keywords": [],
+  "author": "Tae-yoon <yeotaeyoon@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
