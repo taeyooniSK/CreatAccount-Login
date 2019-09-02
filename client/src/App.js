@@ -5,26 +5,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Menu from './components/Menu';
 
-// import axios from 'axios';
-
-import Navigation from './components/Navigation';
-
 export default class App extends Component {
-  state = {
-    data: ''
-  };
-  // fetchTest = () => {
-  //   const URL = 'http://localhost:8000';
-  //   axios
-  //     .get(URL)
-  //     .then(res => {
-  //       console.log(res.data);
-  //       this.setState({ data: res.data });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
   render() {
     return (
       <div>
@@ -34,7 +15,6 @@ export default class App extends Component {
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
         </Router>
-        {/* <button onClick={this.fetchTest}>Fetch</button> */}
       </div>
     );
   }

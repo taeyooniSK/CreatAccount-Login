@@ -1,59 +1,32 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import withRequest from '../HOC/withRequest';
 
-export default class Login extends Component {
-  state = {
-    id: '',
-    password: ''
-  };
-
-  handleInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const endpoint = '/login';
-    const data = {
-      id: this.state.id,
-      password: this.state.password
-    };
-    axios({
-      method: 'post',
-      url: endpoint,
-      data
-    })
-      .then(res => {
-        console.log(res.data.msg);
-        if (res.data.msg === 'LOGIN/SUCCESS') {
-          alert(`Welcome, ${res.data.id}`);
-          this.props.history.push('/');
-        }
-        if (res.data.msg === 'LOGIN/FAILURE') {
-          this.props.history.push('/signup');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+class Login extends Component {
   render() {
+    const { handleInput, handleSubmit } = this.props;
     return (
       <div>
         <h1> Login Page</h1>
-        <form action='/login' method='POST' onSubmit={this.handleSubmit}>
+        <form
+          action='/login'
+          method='POST'
+          onSubmit={e => handleSubmit(e, 'login')}
+        >
           <label htmlFor='id'>ID:</label>
-          <input type='text' name='id' id='id' onChange={this.handleInput} />
+          <input type='text' name='id' id='id' onChange={e => handleInput(e)} />
           <label htmlFor='password'>Password:</label>
           <input
             type='password'
             name='password'
             id='password'
-            onChange={this.handleInput}
+            autoComplete='true'
+            onChange={e => handleInput(e)}
           />
-          <button>Sign up</button>
+          <button>Login</button>
         </form>
       </div>
     );
   }
 }
+
+export default withRequest(Login);
